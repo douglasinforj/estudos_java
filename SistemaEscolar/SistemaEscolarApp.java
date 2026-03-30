@@ -100,13 +100,26 @@ public class SistemaEscolarApp {
 
     public static void main(String[] args){
 
-        Aluno aluno01 = new Aluno("Douglas Silva", "2026-java-01");
+        //Adicionar Variavel para receber varios registros (array)
+        List<Pessoa> listaPessoas = new ArrayList<>();    
 
+        //Aluno
+        Aluno aluno01 = new Aluno("Douglas Silva", "2026-java-01");
         aluno01.adicionarNota(8.5);
         aluno01.adicionarNota(7.0);
         aluno01.adicionarNota(9.0);
         aluno01.adicionarNota(3.0);
-
         aluno01.exibirDados();
+
+        //Professor
+        Professor pro01 = new Professor("Dr. Ricardo", "PRO-001","Desenvolvimento Java", 5500.00);
+        listaPessoas.add(pro01);
+
+        //mais do polimorfismo com exibirdados
+        System.out.println("Relatório Geral do Sistema");
+        for(Pessoa p : listaPessoas){
+            p.exibirDados();
+        }
+
     }
 }
