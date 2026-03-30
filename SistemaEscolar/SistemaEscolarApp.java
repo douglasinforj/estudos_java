@@ -109,7 +109,8 @@ public class SistemaEscolarApp {
         aluno01.adicionarNota(7.0);
         aluno01.adicionarNota(9.0);
         aluno01.adicionarNota(3.0);
-        aluno01.exibirDados();
+        //aluno01.exibirDados();
+        listaPessoas.add(aluno01);
 
         //Professor
         Professor pro01 = new Professor("Dr. Ricardo", "PRO-001","Desenvolvimento Java", 5500.00);
