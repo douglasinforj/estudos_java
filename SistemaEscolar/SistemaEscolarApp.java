@@ -60,6 +60,16 @@ class Aluno extends Pessoa {
     }
 }
 
+class Professor extends Pessoa{
+    private String especialidade;
+    private double salario;
+
+    //metodo construtor Professor
+    public Professor(String nome, String registroFuncional, String especialista, double salario){
+        
+    }
+}
+
 //Classe principal (única public)
 public class SistemaEscolarApp {
 
