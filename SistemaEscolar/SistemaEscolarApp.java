@@ -70,7 +70,10 @@ class Professor extends Pessoa{
         this.especialidade;
         setSalario(salario);
     }
-
+    //encapsulando com logica de proteção
+    public void setSalario(){
+        
+    }
 }
 
 //Classe principal (única public)
