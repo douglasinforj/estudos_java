@@ -65,9 +65,12 @@ class Professor extends Pessoa{
     private double salario;
 
     //metodo construtor Professor
-    public Professor(String nome, String registroFuncional, String especialista, double salario){
-        
+    public Professor(String nome, String registroFuncional, String especialidade, double salario){
+        super(nome, registroFuncional);
+        this.especialidade;
+        setSalario(salario);
     }
+
 }
 
 //Classe principal (única public)
