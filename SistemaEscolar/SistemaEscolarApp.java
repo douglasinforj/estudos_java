@@ -67,12 +67,31 @@ class Professor extends Pessoa{
     //metodo construtor Professor
     public Professor(String nome, String registroFuncional, String especialidade, double salario){
         super(nome, registroFuncional);
-        this.especialidade;
-        setSalario(salario);
+        this.especialidade = especialidade;
+        setSalario(salario);   //função criada a seguir.
     }
     //encapsulando com logica de proteção
-    public void setSalario(){
-        
+    public void setSalario( double salario){
+        if(salario > 0){
+            this.salario = salario;
+        }else{
+            System.out.println("Erro: Salario de ser valor positivo");
+        }
+    }
+    public double getSalario(){
+        return salario;
+    }
+    public String getEspecialidade(){
+        return especialidade;
+    }
+
+    @Override
+    public void exibirDados(){
+        System.out.println("\n --- Registro do professor ---");
+        System.out.println("Nome: " + getNome());
+        System.out.println("IDFuncional: " + getRegistroDigital());
+        System.out.println("Disciplina: " + especialidade);
+        System.out.printf("Remuneração: R$ %.2f%n",getSalario());
     }
 }
 
