@@ -97,20 +97,32 @@ class Professor extends Pessoa{
 
 //Classe principal (única public)
 public class SistemaEscolarApp {
-
     public static void main(String[] args){
 
         //Adicionar Variavel para receber varios registros (array)
         List<Pessoa> listaPessoas = new ArrayList<>();    
 
-        //Aluno
+        //Alunos
         Aluno aluno01 = new Aluno("Douglas Silva", "2026-java-01");
         aluno01.adicionarNota(8.5);
         aluno01.adicionarNota(7.0);
         aluno01.adicionarNota(9.0);
         aluno01.adicionarNota(3.0);
-        //aluno01.exibirDados();
+
+        Aluno aluno02 = new Aluno("Erick Roberto", "2026-java-02");
+        aluno02.adicionarNota(9.5);
+        aluno02.adicionarNota(7.8);
+        aluno02.adicionarNota(7.0);
+        aluno02.adicionarNota(9.0);
+
+
+
+
+        //adicionando alunos a lista
         listaPessoas.add(aluno01);
+        listaPessoas.add(aluno02);
+
+
 
         //Professor
         Professor pro01 = new Professor("Dr. Ricardo", "PRO-001","Desenvolvimento Java", 5500.00);
