@@ -1,7 +1,10 @@
 package SistemaEscolar;
 
+import java.io.BufferedWriter;
+import java.io.FileWriter;
 import java.util.ArrayList;
 import java.util.List;
+import java.io.IOException;
 
 //adicionando interface para simulação e Autenticação
 interface Autenticavel {
@@ -65,7 +68,7 @@ class Aluno extends Pessoa {
 
     @Override
     public void exibirDados(){
-        System.out.println("=== Ficha do Aluno ===");
+        System.out.println("\n --- Ficha do Aluno ---");
         System.out.println("Nome: " + getNome());
         System.out.println("Matricula: " + getRegistroDigital());
         System.out.printf("Média Atual: %.2f%n", calcularMedia());
@@ -99,6 +102,11 @@ class Professor extends Pessoa{
     }
 
     @Override
+    public String toCSV() {
+        return "PROFESSOR," + getNome() + "," + getRegistroDigital() + "," + especialidade + "," + salario;
+    }
+
+    @Override
     public void exibirDados(){
         System.out.println("\n --- Registro do professor ---");
         System.out.println("Nome: " + getNome());
@@ -107,6 +115,24 @@ class Professor extends Pessoa{
         System.out.printf("Remuneração: R$ %.2f%n",getSalario());
     }
 }
+
+class GerenciadorDados {
+    private static final String NOME_ARQUIVO = "dados_sistema.csv";
+
+    public static void salvarPessoas(List<Pessoa> pessoas) {
+        // Try-with-resources garante que o arquivo será fechado mesmo se der erro
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(NOME_ARQUIVO))) {
+            for (Pessoa p : pessoas) {
+                writer.write(p.toCSV());
+                writer.newLine();
+            }
+            System.out.println("\n[Sucesso] Dados salvos em " + NOME_ARQUIVO);
+        } catch (IOException e) {
+            System.err.println("Erro ao salvar dados: " + e.getMessage());
+        }
+    }
+}
+
 
 //Classe principal (única public)
 public class SistemaEscolarApp {
@@ -139,10 +165,13 @@ public class SistemaEscolarApp {
         listaPessoas.add(pro01);
 
         //mais do polimorfismo com exibirdados
-        System.out.println("Relatório Geral do Sistema");
+        System.out.println("\n --- RELATÓRIO GERAL DO SISTEMA ---");
         for(Pessoa p : listaPessoas){
             p.exibirDados();
         }
+
+        //Persistindo dados na prática
+        GerenciadorDados.salvarPessoas(listaPessoas);
 
     }
 }
