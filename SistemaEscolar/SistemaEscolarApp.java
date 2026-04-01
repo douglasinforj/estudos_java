@@ -117,7 +117,7 @@ class Professor extends Pessoa{
 }
 
 class GerenciadorDados {
-    private static final String NOME_ARQUIVO = "dados_sistema.csv";
+    private static final String NOME_ARQUIVO = "SistemaEscolar/Dados/dados_sistema.csv";
 
     public static void salvarPessoas(List<Pessoa> pessoas) {
         // Try-with-resources garante que o arquivo será fechado mesmo se der erro
