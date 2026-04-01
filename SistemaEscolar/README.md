@@ -10,7 +10,7 @@ Preparação da arquitetura para futuras implementações de autenticação.
 ## Estruturas de Dados
 Utilização de Listas (ArrayList) para gerenciamento dinâmico de objetos.
 Manipulação de coleções com diferentes tipos através de abstração (Pessoa).
-# Lógica de Negócio
+## Lógica de Negócio
 Implementação de cálculo de média (calcularMedia) com validação de dados.
 Regras de negócio aplicadas:
 Validação de notas (0 a 10)
