@@ -26,6 +26,9 @@ abstract class Pessoa {
     }
 
     public abstract void exibirDados();
+
+    //método para formatar os dados
+    public abstract String toCSV();
 }
 
 class Aluno extends Pessoa {
@@ -53,6 +56,11 @@ class Aluno extends Pessoa {
             soma += nota;
         }
         return soma / notas.size();
+    }
+
+    @Override
+    public String toCSV(){
+        return "ALUNO," + getNome() + "," + getRegistroDigital() + "," + calcularMedia();
     }
 
     @Override
