@@ -3,6 +3,11 @@ package SistemaEscolar;
 import java.util.ArrayList;
 import java.util.List;
 
+//adicionando interface para simulação e Autenticação
+interface Autenticavel {
+    boolean login(String usuario, String senha);
+}
+
 abstract class Pessoa {
     private String nome;
     private String registroDigital;
@@ -114,9 +119,6 @@ public class SistemaEscolarApp {
         aluno02.adicionarNota(7.8);
         aluno02.adicionarNota(7.0);
         aluno02.adicionarNota(9.0);
-
-
-
 
         //adicionando alunos a lista
         listaPessoas.add(aluno01);
