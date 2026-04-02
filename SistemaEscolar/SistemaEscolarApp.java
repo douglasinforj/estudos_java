@@ -76,7 +76,7 @@ class Aluno extends Pessoa {
     }
 }
 
-class Professor extends Pessoa{
+class Professor extends Pessoa implements Autenticavel{
     private String especialidade;
     private double salario;
 
@@ -107,12 +107,18 @@ class Professor extends Pessoa{
     }
 
     @Override
+    public boolean login(String usuario, String senha) {
+        return usuario.equals(usuario) && senha.equals(senha);
+    }
+
+    @Override
     public void exibirDados(){
         System.out.println("\n --- Registro do professor ---");
         System.out.println("Nome: " + getNome());
         System.out.println("IDFuncional: " + getRegistroDigital());
         System.out.println("Disciplina: " + especialidade);
         System.out.printf("Remuneração: R$ %.2f%n",getSalario());
+        System.out.println("\n");
     }
 }
 
@@ -173,5 +179,9 @@ public class SistemaEscolarApp {
         //Persistindo dados na prática
         GerenciadorDados.salvarPessoas(listaPessoas);
 
+        //Teste de autenticação
+        System.out.println("\n --- Teste de Login do professor ---");
+        boolean login = pro01.login("PRO-001", "admin123");
+        System.out.println(login ? "\n Login realizado com sucesso" : "Falha no login");
     }
 }
