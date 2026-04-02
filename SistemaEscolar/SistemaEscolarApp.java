@@ -5,6 +5,9 @@ import java.io.FileWriter;
 import java.util.ArrayList;
 import java.util.List;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 
 //adicionando interface para simulação e Autenticação
 interface Autenticavel {
@@ -103,7 +106,7 @@ class Professor extends Pessoa implements Autenticavel{
 
     @Override
     public String toCSV() {
-        return "PROFESSOR," + getNome() + "," + getRegistroDigital() + "," + especialidade + "," + salario;
+        return "PROFESSOR," + getNome() + "," + getRegistroDigital() + "," + getEspecialidade() + "," + getSalario();
     }
 
     @Override
@@ -123,16 +126,23 @@ class Professor extends Pessoa implements Autenticavel{
 }
 
 class GerenciadorDados {
-    private static final String NOME_ARQUIVO = "SistemaEscolar/Dados/dados_sistema.csv";
+    private static final String NOME_ARQUIVO = "Dados/dados_sistema.csv";
 
     public static void salvarPessoas(List<Pessoa> pessoas) {
-        // Try-with-resources garante que o arquivo será fechado mesmo se der erro
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter(NOME_ARQUIVO))) {
-            for (Pessoa p : pessoas) {
-                writer.write(p.toCSV());
-                writer.newLine();
+        try {
+            // Garante que a pasta existe
+            Path path = Paths.get(NOME_ARQUIVO);
+            Files.createDirectories(path.getParent());
+
+            try (BufferedWriter writer = new BufferedWriter(new FileWriter(NOME_ARQUIVO))) {
+                for (Pessoa p : pessoas) {
+                    writer.write(p.toCSV());
+                    writer.newLine();
+                }
             }
-            System.out.println("\n[Sucesso] Dados salvos em " + NOME_ARQUIVO);
+
+            System.out.println("\n[Sucesso] Dados salvos em " + path.toAbsolutePath());
+
         } catch (IOException e) {
             System.err.println("Erro ao salvar dados: " + e.getMessage());
         }
