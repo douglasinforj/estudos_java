@@ -192,6 +192,6 @@ public class SistemaEscolarApp {
         //Teste de autenticação
         System.out.println("\n --- Teste de Login do professor ---");
         boolean login = pro01.login("PRO-001", "admin123");
-        System.out.println(login ? "\n Login realizado com sucesso" : "Falha no login");
+        System.out.println(login ? "\n Login realizado com sucesso \n" : "Falha no login");
     }
 }
