@@ -37,7 +37,11 @@ public class Aluno extends Pessoa {
     
     @Override
     public void exibirDados(){
-        System.out.println("Aluno: " + getNome() + " | Média: " + calcularMedia());
+        System.out.println("\n --- Ficha do Aluno ---");
+        System.out.println("Nome: " + getNome());
+        System.out.println("Matricula: " + getRegistroDigital());
+        System.out.printf("Média atual %.2f%n", calcularMedia());
+        System.out.println("Status: " + (calcularMedia() >= 7 ? "Aprovado" : "Em recuperação"));
     }
 
     @Override
