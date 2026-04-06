@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import br.com.sistema.escolar.model.Pessoa;
 import br.com.sistema.escolar.model.Professor;
+import br.com.sistema.escolar.service.GerenciadorDados;
 import br.com.sistema.escolar.model.Aluno;
 
 
@@ -30,6 +31,14 @@ public class SistemaEscolarApp {
             for(Pessoa p : listaPessoas){
                 p.exibirDados();
             }
+
+            //Teste Login
+            System.out.println("\n ---Teste de Login para Professor---");
+            boolean login = pro01.login("PRO-001","admin123"); 
+            System.out.println(login ? "Login Ok." : "Login Falhou");
+
+            //Salvar dados em CSV
+            GerenciadorDados.salvarPessoas(listaPessoas);
 
 
         }catch(Exception e){
